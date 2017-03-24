@@ -1,0 +1,10 @@
+{% load my_filters %}
+<form action="" method="post">
+{% csrf_token %}
+{% for i in 9|create_range %}
+	{% if not i|mod:3 %}
+	<br>
+	{%endif%}
+	<input style="width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{i}}" value="" />
+{% endfor %}
+</form>
