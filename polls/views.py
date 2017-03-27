@@ -29,5 +29,6 @@ def xo(request):
     my_list=[2 for i in range(9)]
     for i in steps:
         my_list[i.x]=i.type
-    context = {'my_steps0': my_list,'my_steps': my_list[0:3],'my_steps1': my_list[3:6],'my_steps2': my_list[6:9]}
+    #context = {'my_steps0': my_list,'my_steps': my_list[0:3],'my_steps1': my_list[3:6],'my_steps2': my_list[6:9]}
+    context = {'my_steps0': my_list}
     return render(request, 'polls/my.html',context)
