@@ -33,15 +33,21 @@
 <br>
 <input id="NewGame" type="button" value="New Game"onclick='getid(this);'/>
 </form>
+
 <script>
 function getid(el){
-id=el.id;
-var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id="+id;
-alert(window.location.port)
-
-alert(text)
-
-window.location.href = text
+	alert(document.getElementById(el.id).value)
+	id=el.id;
+	if ((document.getElementById(el.id).value=="X") || (document.getElementById(el.id).value=="O")){
+		alert("Button is not empty,choose other button");
+	}
+	else{
+		id=el.id;
+		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id="+id;
+		alert(window.location.port);
+		alert(text);
+		window.location.href = text;
+	}
 }
 </script>
 
