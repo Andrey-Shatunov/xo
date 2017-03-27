@@ -9,18 +9,18 @@
 {#	{% if not i|mod:3 %}#}
 {#	<br>#}
 {#	{%endif%}#}
-{#	<input style="width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{i}}" value="" />#}
+{#	<input style="width:100px;height:100px;" hspace="4" vspace="4" type="button" name="b{{i}}" value="" />#}
 {#{% endfor %}#}
 
 {% for i in my_steps0 %}
 	{% if i == 0 %}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="O" />
+		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="O" />
 	{%endif%}
 	{% if i == 1%}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="X" />
+		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="X" />
 	{%endif%}
 	{% if i == 2 %}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="-" />
+		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif;width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value=" " />
 	{%endif%}
 	{% if forloop.counter0 == 2 %}
 	<br>
