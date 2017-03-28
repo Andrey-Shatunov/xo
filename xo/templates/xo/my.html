@@ -35,7 +35,10 @@
 </form>
 
 <script>
+check_win()
 function getid(el){
+	
+	//alert("sdfg")
 	//alert(document.getElementById(el.id).value)
 	id=el.id;
 	if ((document.getElementById(el.id).value=="X") || (document.getElementById(el.id).value=="O")){
@@ -46,6 +49,37 @@ function getid(el){
 		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id="+id;
 		//alert(window.location.port);
 		//alert(text);
+		window.location.href = text;
+	}
+}
+function check_win(){
+	//alert(document.getElementById("3").value)
+	if (
+	((document.getElementById("0").value=="X")&&(document.getElementById("1").value=="X")&&(document.getElementById("2").value=="X"))||
+	((document.getElementById("3").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("5").value=="X"))||
+	((document.getElementById("6").value=="X")&&(document.getElementById("7").value=="X")&&(document.getElementById("8").value=="X"))||
+	((document.getElementById("0").value=="X")&&(document.getElementById("3").value=="X")&&(document.getElementById("6").value=="X"))||
+	((document.getElementById("1").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("7").value=="X"))||
+	((document.getElementById("2").value=="X")&&(document.getElementById("5").value=="X")&&(document.getElementById("8").value=="X"))||
+	((document.getElementById("2").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("6").value=="X"))
+	)
+	{
+		alert("X is win")
+		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id=NewGame";
+		window.location.href = text;
+	}
+	if (
+	((document.getElementById("0").value=="O")&&(document.getElementById("1").value=="O")&&(document.getElementById("2").value=="O"))||
+	((document.getElementById("3").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("5").value=="O"))||
+	((document.getElementById("6").value=="O")&&(document.getElementById("7").value=="O")&&(document.getElementById("8").value=="O"))||
+	((document.getElementById("0").value=="O")&&(document.getElementById("3").value=="O")&&(document.getElementById("6").value=="O"))||
+	((document.getElementById("1").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("7").value=="O"))||
+	((document.getElementById("2").value=="O")&&(document.getElementById("5").value=="O")&&(document.getElementById("8").value=="O"))||
+	((document.getElementById("2").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("6").value=="O"))
+	)
+	{
+		alert("O is win")
+		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id=NewGame";
 		window.location.href = text;
 	}
 }

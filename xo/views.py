@@ -6,7 +6,7 @@ from .models import Steps
 
 def index(request):
     style=r' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" '
-    s=r'http://192.168.2.28:8000/xo/xo/'
+    s=r'http://127.0.0.1:8000/xo/xo/'
     return HttpResponse("Hello. Use <p><a href="+s+">This</a></p>")
 
 def xo(request):
@@ -31,4 +31,4 @@ def xo(request):
         my_list[i.x]=i.type
     #context = {'my_steps0': my_list,'my_steps': my_list[0:3],'my_steps1': my_list[3:6],'my_steps2': my_list[6:9]}
     context = {'my_steps0': my_list}
-    return render(request, 'polls/my.html',context)
+    return render(request, 'xo/my.html',context)
