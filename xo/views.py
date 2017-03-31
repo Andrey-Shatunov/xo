@@ -15,7 +15,10 @@ def index(request):
 
 def check_full_room(request_user, room_id):
     print("check_full_room")
-    Room.object.filter(pk=room_id)
+    room=Room.objects.filter(pk=room_id)
+    room = Room.objects.get(pk=room_id)
+    print(room)
+    print(room.user_one)
 
 def xo(request,room_id):
     check_full_room(request.user,room_id)
@@ -48,7 +51,7 @@ def xo(request,room_id):
                         # for i in room:
                         #  print(i.room_name)
                         # print(i.user_one)
-        print(room.user_one)
+        #print(room.user_one)
 
         steps = Steps.objects.filter(room=room)
         entry_list = list(steps)
