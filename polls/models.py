@@ -20,7 +20,3 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
-class Steps(models.Model):
-    x=models.IntegerField(default=0)
-    y=models.IntegerField(default=0)
-    type=models.IntegerField(default=0)

@@ -3,37 +3,57 @@
 {#<h1>{{ my_steps}}</h1>#}
 {#<h1>{{ my_steps1}}</h1>#}
 {#<h1>{{ my_steps2}}</h1>#}
-<form action="" method="post">
-{% csrf_token %}
-{#{% for i in 9|create_range %}#}
-{#	{% if not i|mod:3 %}#}
-{#	<br>#}
-{#	{%endif%}#}
-{#	<input style="width:100px;height:100px;" hspace="4" vspace="4" type="button" name="b{{i}}" value="" />#}
-{#{% endfor %}#}
+<table>
+  <tr>
+    <td>
+		<form action="" method="post">
+			{% csrf_token %}
+			{#{% for i in 9|create_range %}#}
+			{#	{% if not i|mod:3 %}#}
+			{#	<br>#}
+			{#	{%endif%}#}
+			{#	<input style="width:100px;height:100px;" hspace="4" vspace="4" type="button" name="b{{i}}" value="" />#}
+			{#{% endfor %}#}
 
-{% for i in my_steps0 %}
-	{% if i == 0 %}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="O" />
-	{%endif%}
-	{% if i == 1%}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="X" />
-	{%endif%}
-	{% if i == 2 %}
-		<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif;width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value=" " />
-	{%endif%}
-	{% if forloop.counter0 == 2 %}
-	<br>
-	{%endif%}
-	{% if forloop.counter0 == 5 %}
-	<br>
-	{%endif%}
-{% endfor %}
-<br>
-<br>
-<input id="NewGame" type="button" value="New Game"onclick='getid(this);'/>
+			{% for i in my_steps0 %}
+				{% if i == 0 %}
+					<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="O" />
+				{%endif%}
+				{% if i == 1%}
+					<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif; width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value="X" />
+				{%endif%}
+				{% if i == 2 %}
+					<input id={{ forloop.counter0 }} onclick='getid(this);' style="font:46pt Arial, Helvetica, sans-serif;width:100px;height:100px" hspace="4" vspace="4" type="button" name="b{{ forloop.counter }}" value=" " />
+				{%endif%}
+				{% if forloop.counter0 == 2 %}
+				<br>
+				{%endif%}
+				{% if forloop.counter0 == 5 %}
+				<br>
+				{%endif%}
+			{% endfor %}
+			<br>
+			<br>
+			<input id="NewGame" type="button" value="New Game"onclick='getid(this);'/>
+		</form>
+	</td>
+	<td> </td>
+	<td>
+		<h1>{{ my_steps0}}</h1>
+		<h1>{{ my_steps0}}</h1>
+		<h1>{{ my_steps0}}</h1><h1>{{ my_steps0}}</h1><h1>{{ my_steps0}}</h1>
+	</td>
+  </tr>
+</table>
+
+<form action='/loginsys/logout/' method='post'>
+	{% csrf_token %}
+	<input type="submit" value="Logout" />
+	<input type="hidden" name="next" value="{{ next|escape }}" />
+	{% if form.errors %}
+	<p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>
+	{% endif %}
 </form>
-
 <script>
 check_win()
 function getid(el){
@@ -66,6 +86,20 @@ function check_win(){
 	{
 		alert("X is win")
 		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id=NewGame";
+//
+// Передаём name и surname в параметрах запроса
+
+var xhr = new XMLHttpRequest();
+
+//var params = 'name=' + encodeURIComponent(name) +'&surname=' + encodeURIComponent(surname);
+
+xhr.open("GET", '/add_win', true);
+
+//xhr.onreadystatechange = ...;
+
+xhr.send();
+//
+alert("X is win")
 		window.location.href = text;
 	}
 	if (

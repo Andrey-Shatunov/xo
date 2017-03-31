@@ -1,7 +1,8 @@
-{% if latest_question_list %}
+{% if room %}
+    <h1>Выберите комнату</h1>
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% for i in room %}
+        <li><a href="/xo/xo/{{ i.id }}">{{ i }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
