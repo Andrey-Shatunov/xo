@@ -13,6 +13,7 @@ class Room(models.Model):
 
 class Steps(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE,default="")
+    player = models.CharField(max_length=200,default="")
     x=models.IntegerField(default=0)
     y=models.IntegerField(default=0)
     type=models.IntegerField(default=0)

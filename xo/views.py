@@ -13,8 +13,14 @@ def index(request):
     #return HttpResponse("Hello. Use <p><a href="+s+">This</a></p>")
     return render(request, 'xo/index.html',{'room': rooms})
 
+def check_full_room(request_user, room_id):
+    print("check_full_room")
+    Room.object.filter(pk=room_id)
+
 def xo(request,room_id):
+    check_full_room(request.user,room_id)
     if request.user.is_authenticated():
+        #print(request.user)
         room = get_object_or_404(Room, pk=room_id)
         if len(request.GET) > 0:
             if request.GET.__getitem__("id") == "NewGame":
@@ -22,19 +28,19 @@ def xo(request,room_id):
                 steps = Steps.objects.filter(room=room)
                 steps.delete()
             else:
-                print("Kol-vo shagov")
-                print(len(list(Steps.objects.filter(room=room))))
+                #print("Kol-vo shagov")
+                #print(len(list(Steps.objects.filter(room=room))))
                 if not Steps.objects.filter(room=room, x=request.GET.__getitem__("id")):
                     if (len(list(Steps.objects.filter(room=room)))) % 2 == 0:
                         # room = get_object_or_404(Room, pk=room_id)
                         # room=Room.objects.filter(id=room_id)
                         # print(room.id)
-                        p = Steps(room=room, x=request.GET.__getitem__("id"), y=0, type=1)
+                        p = Steps(room=room,player=request.user, x=request.GET.__getitem__("id"), y=0, type=1)
                         p.save()
                     elif (len(list(Steps.objects.filter(room=room)))) % 2 == 1:
                         # room = get_object_or_404(Room, pk=room_id)
                         # room = Room.objects.filter(id=room_id)
-                        p = Steps(room=room, x=request.GET.__getitem__("id"), y=0, type=0)
+                        p = Steps(room=room,player=request.user, x=request.GET.__getitem__("id"), y=0, type=0)
                         p.save()
 
                         # room = Room.objects.filter()
