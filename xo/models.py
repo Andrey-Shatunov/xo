@@ -6,8 +6,8 @@ from django.utils import timezone
 
 class Room(models.Model):
     room_name = models.CharField(max_length=200,default="")
-    user_one = models.IntegerField(default=0)
-    user_two = models.IntegerField(default=0)
+    user_one = models.CharField(max_length=200,default="0")
+    user_two = models.CharField(max_length=200,default="0")
     def __str__(self):
         return self.room_name
 

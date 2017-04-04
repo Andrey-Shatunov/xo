@@ -1,5 +1,5 @@
 {% load my_filters %}
-{#<h1>{{ my_steps0}}</h1>#}
+
 {#<h1>{{ my_steps}}</h1>#}
 {#<h1>{{ my_steps1}}</h1>#}
 {#<h1>{{ my_steps2}}</h1>#}
@@ -38,10 +38,10 @@
 		</form>
 	</td>
 	<td> </td>
-	<td>
-		<h1>{{ my_steps0}}</h1>
-		<h1>{{ my_steps0}}</h1>
-		<h1>{{ my_steps0}}</h1><h1>{{ my_steps0}}</h1><h1>{{ my_steps0}}</h1>
+	<td style="vertical-align: top;">
+		<h3>You are {{ player }}</h3>
+		<h3>Your are win: {{ win }}</h3>
+		<h3>Your are loose: {{ loose }}</h3>
 	</td>
   </tr>
 </table>
@@ -84,22 +84,23 @@ function check_win(){
 	((document.getElementById("2").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("6").value=="X"))
 	)
 	{
-		alert("X is win")
+
 		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id=NewGame";
 //
 // Передаём name и surname в параметрах запроса
 
-var xhr = new XMLHttpRequest();
+		var xhr = new XMLHttpRequest();
 
-//var params = 'name=' + encodeURIComponent(name) +'&surname=' + encodeURIComponent(surname);
+		//var params = 'name=' + encodeURIComponent(name) +'&surname=' + encodeURIComponent(surname);
+		s=window.location.pathname+"/add_win?type=1"
+		xhr.open("GET", s, true);
 
-xhr.open("GET", '/add_win', true);
+		//xhr.onreadystatechange = ...;
 
-//xhr.onreadystatechange = ...;
-
-xhr.send();
+		xhr.send();
 //
-alert("X is win")
+		//alert("X is win")
+		alert("X is win")
 		window.location.href = text;
 	}
 	if (
@@ -113,9 +114,24 @@ alert("X is win")
 	)
 	{
 		alert("O is win")
+		var xhr = new XMLHttpRequest();
+
+		//var params = 'name=' + encodeURIComponent(name) +'&surname=' + encodeURIComponent(surname);
+		s=window.location.pathname+"/add_win?type=0"
+		xhr.open("GET", s, true);
+
+		//xhr.onreadystatechange = ...;
+
+		xhr.send();
 		var text = 'http://' + window.location.hostname+":"+window.location.port + window.location.pathname+"?id=NewGame";
+		alert("O is win")
 		window.location.href = text;
 	}
 }
+
+function refresh_list() {
+  location.reload();
+}
+//setInterval("refresh_list()", 1500);
 </script>
 

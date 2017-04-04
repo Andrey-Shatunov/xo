@@ -2,7 +2,7 @@
     <h1>Выберите комнату</h1>
     <ul>
     {% for i in room %}
-        <li><a href="/xo/xo/{{ i.id }}">{{ i }}</a></li>
+        <li><a href="/xo/xo/check_full_room/{{ i.id }}">{{ i }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
