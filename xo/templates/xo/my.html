@@ -2,7 +2,8 @@
 
 {#<h1>{{ my_steps}}</h1>#}
 {#<h1>{{ my_steps1}}</h1>#}
-{#<h1>{{ my_steps2}}</h1>#}
+<h1>Player one is: {{ user_one}}</h1>
+<h1>Player two is: {{ user_two}}</h1>
 <table>
   <tr>
     <td>
@@ -81,7 +82,8 @@ function check_win(){
 	((document.getElementById("0").value=="X")&&(document.getElementById("3").value=="X")&&(document.getElementById("6").value=="X"))||
 	((document.getElementById("1").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("7").value=="X"))||
 	((document.getElementById("2").value=="X")&&(document.getElementById("5").value=="X")&&(document.getElementById("8").value=="X"))||
-	((document.getElementById("2").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("6").value=="X"))
+	((document.getElementById("2").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("6").value=="X"))||
+	((document.getElementById("0").value=="X")&&(document.getElementById("4").value=="X")&&(document.getElementById("8").value=="X"))
 	)
 	{
 
@@ -110,7 +112,8 @@ function check_win(){
 	((document.getElementById("0").value=="O")&&(document.getElementById("3").value=="O")&&(document.getElementById("6").value=="O"))||
 	((document.getElementById("1").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("7").value=="O"))||
 	((document.getElementById("2").value=="O")&&(document.getElementById("5").value=="O")&&(document.getElementById("8").value=="O"))||
-	((document.getElementById("2").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("6").value=="O"))
+	((document.getElementById("2").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("6").value=="O"))||
+	((document.getElementById("0").value=="O")&&(document.getElementById("4").value=="O")&&(document.getElementById("8").value=="O"))
 	)
 	{
 		alert("O is win")
@@ -132,6 +135,6 @@ function check_win(){
 function refresh_list() {
   location.reload();
 }
-//setInterval("refresh_list()", 1500);
+setInterval("refresh_list()", 1500);
 </script>
 
