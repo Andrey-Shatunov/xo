@@ -8,3 +8,11 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+<form action='/loginsys/logout/' method='post'>
+	{% csrf_token %}
+	<input type="submit" value="Logout" />
+	<input type="hidden" name="next" value="{{ next|escape }}" />
+	{% if form.errors %}
+	<p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>
+	{% endif %}
+</form>
