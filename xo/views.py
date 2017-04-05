@@ -13,6 +13,17 @@ def index(request):
     #for i in rooms:
         #print(i.id)
     #return HttpResponse("Hello. Use <p><a href="+s+">This</a></p>")
+    rooms = Room.objects.all()
+    for room in rooms:
+        print(room.user_one)
+        print(room.user_two)
+        if str(request.user) == str(room.user_one):
+            room.user_one = "0"
+            room.save()
+        elif str(request.user) == str(room.user_two):
+            room.user_two = "0"
+            room.save()
+
     return render(request, 'xo/index.html',{'room': rooms})
 
 def check_full_room(request, room_id):
